@@ -34,9 +34,10 @@ namespace LazyJedi.Editors.ScriptableObjects
             get
             {
                 string path = new ProjectSetup().LoadSettings().TemporaryFolder;
-                if (string.IsNullOrEmpty(path))
+                path = Path.Combine(string.IsNullOrEmpty(path) ? LazyEditorStrings.DEFAULT_TEMPORARY_PATH : path, "Json");
+                if (!Directory.Exists(path))
                 {
-                    path = Path.Combine(LazyStrings.DEFAULT_TEMPORARY_PATH, "Json");
+                    Directory.CreateDirectory(path);
                 }
 
                 return path;
@@ -61,6 +62,9 @@ namespace LazyJedi.Editors.ScriptableObjects
             Button btnAssign = _root.Q<Button>("btnAssign");
             btnAssign.RegisterCallback<MouseUpEvent>(OnAssignSelfButton_Clicked);
 
+            Button btnOpen = _root.Q<Button>("btnOpen");
+            btnOpen.RegisterCallback<MouseUpEvent>(OnOpenButton_Clicked);
+
             Button btnSave = _root.Q<Button>("btnSave");
             btnSave.RegisterCallback<MouseUpEvent>(OnSaveButton_Clicked);
 
@@ -76,9 +80,7 @@ namespace LazyJedi.Editors.ScriptableObjects
             Toggle tglOverwrite = _root.Q<Toggle>("tglOverwrite");
             tglOverwrite.RegisterValueChangedCallback(OnOverwriteToggle_Click);
             _showOverwriteWarning = tglOverwrite.value;
-
-            Debug.Log(LazyStrings.PROJECT_DIRECTORY);
-
+            
             return _root;
         }
 
@@ -94,6 +96,11 @@ namespace LazyJedi.Editors.ScriptableObjects
         private void OnAssignSelfButton_Clicked(MouseUpEvent evt)
         {
             AssignSelf();
+        }
+
+        private void OnOpenButton_Clicked(MouseUpEvent evt)
+        {
+            EditorUtility.RevealInFinder(TemporaryPath);
         }
 
         private void OnSaveButton_Clicked(MouseUpEvent evt)

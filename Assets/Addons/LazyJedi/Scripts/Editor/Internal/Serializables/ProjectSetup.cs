@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -45,8 +46,8 @@ namespace LazyJedi.Editors.Internal
         {
             get
             {
-                string settingsPath = LazyStrings.PROJECT_PARENT_DIRECTORY;
-                settingsPath = Path.Combine(settingsPath, LazyStrings.CREATOR_ALIAS, LazyStrings.LAZY_JEDI);
+                string settingsPath = LazyEditorStrings.PERSISTANT_PARENT_PATH;
+                settingsPath = Path.Combine(settingsPath, LazyEditorStrings.CREATOR_ALIAS, LazyEditorStrings.LAZY_JEDI);
                 if (Directory.Exists(settingsPath)) return settingsPath;
 
                 Directory.CreateDirectory(settingsPath);
@@ -83,3 +84,4 @@ namespace LazyJedi.Editors.Internal
         #endregion
     }
 }
+#endif

@@ -1,10 +1,11 @@
+#if UNITY_EDITOR
 using System.IO;
 using UnityEditor;
 using UnityEngine;
 
 namespace LazyJedi.Editors.Internal
 {
-    public static class LazyStrings
+    public static class LazyEditorStrings
     {
         #region FIELDS
 
@@ -15,18 +16,13 @@ namespace LazyJedi.Editors.Internal
 
         #region PROPERTIES
 
-        public static string PROJECT_PARENT_DIRECTORY
-        {
-            get => Directory.GetParent(Directory.GetParent(Application.persistentDataPath).FullName).FullName;
-        }
+        public static string PERSISTANT_PARENT_PATH => Directory.GetParent(Directory.GetParent(Application.persistentDataPath).FullName).FullName;
 
-        public static string PROJECT_DIRECTORY
-        {
-            get => Application.persistentDataPath;
-        }
+        public static string PROJECT_DIRECTORY => Application.persistentDataPath;
 
         public static string DEFAULT_TEMPORARY_PATH => Path.Combine(Path.GetTempPath(), PlayerSettings.productName);
 
         #endregion
     }
 }
+#endif
