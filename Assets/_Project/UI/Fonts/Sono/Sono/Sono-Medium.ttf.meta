@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: d7a591f077cf8f246b21bc93f06f754b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Sono Monospace
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 759cb2aba6642c94281758743c9e3f05, type: 3}
+  - {fileID: 12800000, guid: d66f43b79c5a5b54cb35a795aff3b121, type: 3}
+  - {fileID: 12800000, guid: 90f02a0c91df21b459a32f3eb83b42f4, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

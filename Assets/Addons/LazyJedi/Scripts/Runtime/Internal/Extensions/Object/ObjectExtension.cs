@@ -17,7 +17,7 @@ namespace LazyJedi.Extensions
         {
             return @object == null;
         }
-        
+
         /// <summary>
         /// Check if a System Object is Not Null
         /// </summary>
@@ -35,7 +35,7 @@ namespace LazyJedi.Extensions
         /// <param name="prettyPrint"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static string ToJson<T>(this T @object, bool prettyPrint = false)
+        public static string ToJson(this object @object, bool prettyPrint = false)
         {
             return JsonUtility.ToJson(@object, prettyPrint);
         }
@@ -47,7 +47,7 @@ namespace LazyJedi.Extensions
         /// <returns></returns>
         public static bool IsNull(this Object @object)
         {
-            return @object;
+            return @object is null;
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace LazyJedi.Extensions
         /// <returns></returns>
         public static bool IsNotNull(this Object @object)
         {
-            return !@object;
+            return @object is not null;
         }
 
         #endregion
