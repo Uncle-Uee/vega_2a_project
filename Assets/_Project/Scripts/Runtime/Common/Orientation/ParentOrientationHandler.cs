@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Vega.Weapon
+namespace Vega.Common.Orientation
 {
-    public class WeaponOrientationHandler : MonoBehaviour
+    public class ParentOrientationHandler : MonoBehaviour
     {
         #region FIELDS
 
@@ -12,19 +12,27 @@ namespace Vega.Weapon
 
         [Header("Weapon Rotation Settings")]
         public bool WeaponRotationStopped = false;
+        private Transform _transform;
+
+        #endregion
+
+        #region UNITY METHODS
+
+        private void Awake()
+        {
+            _transform = transform;
+        }
 
         #endregion
 
         #region METHODS
 
-        public void MotionHandler(Vector3 mousePosition)
+        public void MotionHandler(Vector2 direction)
         {
             if (WeaponRotationStopped)
                 return;
 
-            Vector2 direction = (mousePosition - transform.position).normalized;
-            transform.right = direction;
-
+            _transform.right = direction;
             RotationHandler(direction);
             SpriteSortOrderHandler();
         }
@@ -43,18 +51,7 @@ namespace Vega.Weapon
 
         private void RotationHandler(Vector2 direction)
         {
-            if (direction.x < 0)
-            {
-                transform.Rotate(180f, 0f, 0f);
-            }
-            if (Mathf.Approximately(direction.x, -1))
-            {
-                transform.Rotate(-180f, 0f, 0f);
-            }
-            else
-            {
-                transform.Rotate(0f, 0f, 0f);
-            }
+            _weaponRenderer.flipY = direction.x < 0;
         }
 
         #endregion
