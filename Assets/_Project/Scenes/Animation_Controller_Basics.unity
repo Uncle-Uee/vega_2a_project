@@ -474,6 +474,7 @@ MonoBehaviour:
   Rigidbody2D: {fileID: 1691759673}
   Animator: {fileID: 1691759672}
   _speed: 5
+  _isFacingRight: 1
 --- !u!95 &1691759672
 Animator:
   serializedVersion: 5
