@@ -20,10 +20,16 @@ namespace LazyJedi.Common
         {
             get
             {
-                if (_instance != null) return _instance;
+                if (_instance != null)
+                {
+                    return _instance;
+                }
                 _instance = FindObjectOfType<T>();
 
-                if (_instance != null) return _instance;
+                if (_instance != null)
+                {
+                    return _instance;
+                }
 
                 GameObject singletonObject = new GameObject();
                 _instance = singletonObject.AddComponent<T>();
